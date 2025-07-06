@@ -1,0 +1,34 @@
+# IntelliJ IDEA
+*.iml
+.idea/
+out/
+*.ipr
+*.iws
+
+# Build
+target/
+build/
+
+# Arquivos compilados
+*.class
+
+# Logs
+*.log
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+
+# Configurações de biblioteca local (se usar)
+*.jar
+*.war
+*.ear
+
+# Outros arquivos que podem ser ignorados
+*.swp
+*.tmp
+*.bak
+
+# Diretórios de dependências (caso use Maven ou Gradle)
+.mvn/
+.gradle/
