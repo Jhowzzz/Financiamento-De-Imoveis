@@ -1,33 +1,37 @@
-👨‍💻 Projeto: Financiamento de Imóveis
+# Financiamento de Imóveis 🏠🏢🌳
 
-```shell
-🧾 Sobre
-Este projeto é um sistema simples para simular o financiamento de imóveis utilizando os conceitos de Programação Orientada a Objetos (POO) em Java.
+## Sobre o Projeto
 
-📌 Com ele, é possível calcular parcelas mensais para diferentes tipos de imóveis:
+Sistema em Java para simular o financiamento imobiliário, aplicando conceitos de Programação Orientada a Objetos (POO). Permite calcular parcelas para diferentes tipos de imóveis como Casas, Apartamentos e Terrenos.
 
-🏠 Casa
-🏢 Apartamento
-🌳 Terreno
+---
 
-🛠️ Tecnologias utilizadas
-Java ☕
-Programação Orientada a Objetos (POO)
+## Tecnologias Utilizadas
 
-▶️ Como executar
-Clone o repositório:
+- Java ☕  
+- IntelliJ IDEA 🧠  
+- Git & GitHub 🐙  
+- Programação Orientada a Objetos (POO)
 
-bash
-Copiar
-Editar
-git clone https://github.com/Jhowzzz/Financiamento-De-Imoveis.git
-Abra o projeto no IntelliJ ou em sua IDE Java favorita.
+---
 
-Execute o Main.java para iniciar o programa.
+## Versões do Projeto
 
-⚠️ Aviso
-Este é um projeto acadêmico para fins de aprendizado. Os cálculos são simplificados e não refletem exatamente os métodos usados por instituições financeiras reais.
+| Versão | Data       | Descrição                                  |
+|--------|------------|--------------------------------------------|
+| 1.0    | Maio 2025  | Criação do projeto e implementação das classes básicas. |
+| 1.1    | Junho 2025 | Aplicação de polimorfismo para tipos de imóveis.        |
+| 1.2    | Julho 2025 | Melhorias na interface do usuário e nos cálculos.       |
 
-⭐ Curtiu?
-Deixa uma ⭐ no repositório se esse projeto te ajudou!
-Vamos dominar o GitHub, um push de cada vez! 🚀
+---
+
+Autor
+Jhonata Henrique Costa Partica
+GitHub | Brasil
+
+Aviso
+Projeto acadêmico para aprendizado. Os cálculos são simplificados e podem não refletir processos reais de instituições financeiras.
+
+Gostou?
+Deixe uma ⭐ no repositório para apoiar!
+Vamos dominar o GitHub, um push por vez! 🚀
