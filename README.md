@@ -22,6 +22,7 @@ Sistema em Java para simular o financiamento imobiliário, aplicando conceitos d
 | 1.0    | Maio 2025  | Criação do projeto e implementação das classes básicas. |
 | 1.1    | Junho 2025 | Aplicação de polimorfismo para tipos de imóveis.        |
 | 1.2    | Julho 2025 | Melhorias na interface do usuário e nos cálculos.       |
+| 1.3    | Julho 2025 | Melhorias nas subclasses e correções no cálculo. |
 
 ---
 
