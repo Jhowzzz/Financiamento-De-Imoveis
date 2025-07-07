@@ -2,7 +2,7 @@
 package modelo;
 
 //Super-Classe Financiamento:
-public class Financiamento {
+public abstract class Financiamento {
 
     //Atributos
     protected double valorImovel;
@@ -23,7 +23,7 @@ public class Financiamento {
     }
 
     //Método Construtor
-    public Financiamento(double valorImovel, int prazoFinanciamentoAnos, double taxaJurosAnual){
+    public Financiamento(double valorImovel, int prazoFinanciamentoAnos, double taxaJurosAnual) {
 
         this.valorImovel = valorImovel;
         this.prazoFinanciamento = prazoFinanciamentoAnos;
@@ -31,20 +31,11 @@ public class Financiamento {
     }
 
     //Método de Pagamento Mensal
-    public double calculoMensal(){
-        return (valorImovel / (prazoFinanciamento * 12)) * (1 + (taxaJurosAnual / 100 / 12));
-    }
+    public abstract double calculoMensal();
 
     //Método de Pagamento Total
-    public double calcularTotalPagamento() {
-        return calculoMensal() * prazoFinanciamento * 12;
-    }
+    public abstract double calcularTotalPagamento();
 
     //Método de Exibição
-    public void imprimirDados() {
-        System.out.println("\n---- Dados do Financiamento ----");
-        System.out.printf("Valor do Imóvel: R$ %.2f\n", valorImovel);
-        System.out.printf("Valor Total do Financiamento: R$ %.2f\n", calcularTotalPagamento() );
-        System.out.println("");
-    }
+    public abstract void imprimirDados();
 }
