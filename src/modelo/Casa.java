@@ -1,41 +1,62 @@
 package modelo;
 
-//Sub-Classe Casa
-public class Casa extends Financiamento{
-    //Atributos
-   protected double areaConstruida;
-   protected double tamanhoDaCasa;
+public class Casa extends Financiamento {
+    protected double areaConstruida;
+    protected double tamanhoDaCasa;
 
-    //Método Construtor
     public Casa(double valorImovel, int prazoFinanciamentoAnos, double taxaJurosAnual, double areaConstruida, double tamanhoDaCasa) {
         super(valorImovel, prazoFinanciamentoAnos, taxaJurosAnual);
         this.areaConstruida = areaConstruida;
         this.tamanhoDaCasa = tamanhoDaCasa;
     }
 
-    //Método de Pagamento Total
-    public double calcularTotalPagamento(){
-        return calculoMensal() * prazoFinanciamento * 12;
+    public double calcularTotalPagamento() {
+        try {
+            return calculoMensal() * prazoFinanciamento * 12;
+        } catch (AumentoMaiorDoQueJurosException e) {
+            System.out.println("Erro no cálculo: " + e.getMessage());
+            return 0;
+        }
     }
 
-    //Método de Pagamento Mensal Casa
     @Override
-    public double calculoMensal() {
-        double parcelaBase = (valorImovel / (prazoFinanciamento * 12)) * (1 + (taxaJurosAnual / 100 / 12));
-        double parcelaComTaxa = parcelaBase + 80;
-        return parcelaComTaxa;
+    public double calculoMensal() throws AumentoMaiorDoQueJurosException {
+        double parcelaBase = (valorImovel / (prazoFinanciamento * 12));
+        double jurosMensal = parcelaBase * (taxaJurosAnual / 100 / 12);
+        double parcelaComJuros = parcelaBase + jurosMensal;
+
+        double aumento = 80.0;
+
+        if (aumento > (jurosMensal / 2)) {
+            throw new AumentoMaiorDoQueJurosException("Acréscimo de R$ 80,00 é maior que metade dos juros mensais (R$ " + (jurosMensal / 2) + ")");
+        }
+
+        return parcelaComJuros + aumento;
     }
 
-    //Método de Exibição
-    public void imprimirDados(){
+    public double getAreaConstruida() {
+        return areaConstruida;
+    }
+
+    public double getTamanhoDaCasa() {
+        return tamanhoDaCasa;
+    }
+
+    public void imprimirDados() {
         System.out.println("\n╔═══════════════════════════════════════════════════╗");
         System.out.println("║         RESUMO DO FINANCIAMENTO DE CASA           ║");
         System.out.println("╠═══════════════════════════════════════════════════╣");
-        System.out.printf ("║ Área Construída:     %-24.2f m²║\n", areaConstruida);
-        System.out.printf ("║ Tamanho do Terreno:  %-24.2f m²║\n", tamanhoDaCasa);
-        System.out.printf ("║ Valor do Imóvel:     R$ %-24.2f║\n", valorImovel);
-        System.out.printf ("║ Parcela Mensal:      R$ %-24.2f║\n", calculoMensal());
-        System.out.printf ("║ Total a Pagar:       R$ %-24.2f║\n", calcularTotalPagamento());
-        System.out.println  ("╚═══════════════════════════════════════════════════╝");
+        System.out.printf("║ Área Construída:     %-24.2f m²║\n", areaConstruida);
+        System.out.printf("║ Tamanho do Terreno:  %-24.2f m²║\n", tamanhoDaCasa);
+        System.out.printf("║ Valor do Imóvel:     R$ %-24.2f║\n", valorImovel);
+
+        try {
+            System.out.printf("║ Parcela Mensal:      R$ %-24.2f║\n", calculoMensal());
+            System.out.printf("║ Total a Pagar:       R$ %-24.2f║\n", calcularTotalPagamento());
+        } catch (AumentoMaiorDoQueJurosException e) {
+            System.out.println("║ ERRO AO CALCULAR: " + e.getMessage());
+        }
+
+        System.out.println("╚═══════════════════════════════════════════════════╝");
     }
 }

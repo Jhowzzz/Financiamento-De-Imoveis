@@ -2,6 +2,7 @@
 package util;
 
 //Scanner:
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 //Classe Interface
@@ -22,89 +23,72 @@ public class InterfaceUsuario {
             System.out.println("╚══════════════════════════════════════╝");
             System.out.print(">>  Digite a sua opção: ");
             int opcao = scanner.nextInt();
-            if(opcao >= 1 && opcao <= 3) {
+            if (opcao >= 1 && opcao <= 3) {
                 return opcao;
-            }else {
+            } else {
                 System.out.println("Opção inválida! Tente novamente.");
             }
         }
     }
 
-    //Informações do Método escolhido:
+    //Método escolhido: Casa
     public double solicitarAreaConstruida() {
-        System.out.print("Informe a área construída (m²): ");
-        return scanner.nextDouble();
+        return EntradaSegura.lerDouble("Informe a área construída (m²): ");
     }
 
+    //Método escolhido: Casa
     public double solicitarTamanhoTerreno() {
-        System.out.print("Informe o tamanho do terreno (m²): ");
-        return scanner.nextDouble();
+        return EntradaSegura.lerDouble("Informe o tamanho do terreno (m²): ");
     }
 
+    //Método escolhido: Apartamento
     public int solicitarVagasGaragem() {
-        System.out.print("Informe o número de vagas da garagem: ");
-        return scanner.nextInt();
+        return EntradaSegura.lerInt("Informe o número de vagas da garagem: ");
     }
 
+    //Método escolhido: Apartamento
     public int solicitarNumeroAndar() {
-        System.out.print("Informe o número do andar: ");
-        return scanner.nextInt();
+        return EntradaSegura.lerInt("Informe o número do andar: ");
     }
 
+    //Informações do Método escolhido: Terreno
     public String solicitarTipoZona() {
-        scanner.nextLine(); // Consumir o \n pendente
-        System.out.print("Informe o tipo de zona (residencial/comercial): ");
-        return scanner.nextLine();
+        return EntradaSegura.lerLinha("Informe o tipo de zona (residencial/comercial): ");
     }
 
     //Solicita o valor do Imóvel:
     public double solicitarValorImovel() {
-
         //Validação dos dados de entrada:
         while (true) {
-            System.out.print("Valor do Imóvel: R$");
-            valorImovel = scanner.nextDouble();
+            try {
+                System.out.print("Valor do Imóvel: R$");
+                valorImovel = scanner.nextDouble();
 
-            if (valorImovel > 0) {
-                return valorImovel;
-            }else {
-                System.out.println("Erro! O valor digitado deve ser maior que zero.");
-                System.out.println("Tente novamente.\n");
+                if (valorImovel > 0) {
+                    return valorImovel;
+                } else {
+                    System.out.println("Erro! O valor deve ser maior que zero.");
+                }
+
+            } catch (InputMismatchException erro) {
+                System.out.println("Erro: valor inválido! Digite um número válido.");
+                scanner.nextLine();
+            } catch (Exception erro) {
+                System.out.println("Erro: " + erro.getMessage());
+                scanner.nextLine();
             }
         }
     }
+
     //Solicita o prazo do Financiamento:
     public int solicitarPrazoFinanciamento() {
-
         //Validação dos dados de entrada:
-        while (true) {
-            System.out.print("Prazo do Financiamento(em anos): ");
-            int prazoFinanciamento = scanner.nextInt();
-
-            if (prazoFinanciamento > 0 && prazoFinanciamento <= 50) {
-                return prazoFinanciamento;
-            } else {
-                System.out.println("Erro! O prazo deve estar entre 1 à 50 anos. ");
-                System.out.println("Tente novamente!\n");
-            }
-        }
+        return EntradaSegura.lerIntEntreIntervalo("Prazo do Financiamento(em anos): ", 1, 50);
     }
 
     //Solicita à da taxa de juros anual:
     public double solicitarTaxaJurosAnual() {
-
         //Validação dos dados de entrada:
-        while (true) {
-
-            System.out.print("Taxa de Juros Anual(sem %): ");
-            double taxaJurosAnual = scanner.nextDouble();
-
-            if (taxaJurosAnual > 0 && taxaJurosAnual < 100) {
-                return taxaJurosAnual;
-            } else {
-                System.out.println("Erro! A taxa deve ser maior que 0 e menor que 100.");
-                System.out.println("Tente novamente.\n");
-            }
-        }
+        return EntradaSegura.lerDoubleIntervalo("Taxa de Juros Anual (sem %): ", 0, 100);
     }
 }

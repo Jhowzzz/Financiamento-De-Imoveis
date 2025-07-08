@@ -13,6 +13,14 @@ public class Apartamento extends Financiamento{
         this.numeroAndar = numeroAndar;
     }
 
+    public int getVagasGaragem() {
+        return vagasGaragem;
+    }
+
+    public int getNumeroAndar() {
+        return numeroAndar;
+    }
+
     //Método de Pagamento Total
     public double calcularTotalPagamento(){
         return calculoMensal() * prazoFinanciamento * 12;

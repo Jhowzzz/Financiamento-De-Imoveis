@@ -18,6 +18,10 @@ public class Terreno extends Financiamento{
         return parcelaComAcrescimo;
     }
 
+    public String getTipoDeZona() {
+        return tipoDeZona;
+    }
+
     //Método de Pagamento Total
     public double calcularTotalPagamento(){
         return calculoMensal() * prazoFinanciamento * 12;

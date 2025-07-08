@@ -1,8 +1,10 @@
 //Package
 package modelo;
 
+import java.io.Serializable;
+
 //Super-Classe Financiamento:
-public abstract class Financiamento {
+public abstract class Financiamento implements Serializable {
 
     //Atributos
     protected double valorImovel;
@@ -31,7 +33,7 @@ public abstract class Financiamento {
     }
 
     //Método de Pagamento Mensal
-    public abstract double calculoMensal();
+    public abstract double calculoMensal() throws AumentoMaiorDoQueJurosException;
 
     //Método de Pagamento Total
     public abstract double calcularTotalPagamento();
