@@ -51,10 +51,13 @@ public class Casa extends Financiamento {
         System.out.printf("║ Valor do Imóvel:     R$ %-24.2f║\n", valorImovel);
 
         try {
-            System.out.printf("║ Parcela Mensal:      R$ %-24.2f║\n", calculoMensal());
-            System.out.printf("║ Total a Pagar:       R$ %-24.2f║\n", calcularTotalPagamento());
+            double parcela = calculoMensal();
+            double total = calcularTotalPagamento();
+            System.out.printf("║ Parcela Mensal:      R$ %-24.2f║\n", parcela);
+            System.out.printf("║ Total a Pagar:       R$ %-24.2f║\n", total);
         } catch (AumentoMaiorDoQueJurosException e) {
-            System.out.println("║ ERRO AO CALCULAR: " + e.getMessage());
+            String msg = "Cálculo não realizado: acréscimo R$ 80,00 inválido";
+            System.out.printf("║ %-48s║\n", msg);
         }
 
         System.out.println("╚═══════════════════════════════════════════════════╝");
